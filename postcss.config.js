@@ -6,4 +6,4 @@ module.exports = {
     'postcss-font-magician': {},
     'cssnano': {}
   }
-}
+};
