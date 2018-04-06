@@ -2,6 +2,8 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const rupture = require('rupture');
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -61,6 +63,11 @@ module.exports = {
       hash: true, 
       template: './src/index.pug'
     }),
-    new webpack.optimize.UglifyJsPlugin({})
+    new webpack.optimize.UglifyJsPlugin({}), 
+    new CopyWebpackPlugin([{
+      from: './src/medias/',
+      to: './medias'
+    }]),
+    new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i })
   ]
 };
