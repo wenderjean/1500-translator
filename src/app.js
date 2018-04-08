@@ -1,5 +1,4 @@
-require('./app.styl');
-
-import { Translator } from './js/translator';
-Translator();
+import './app.styl';
+import { translator } from './js/translator';
+translator();
  
