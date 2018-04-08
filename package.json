@@ -14,8 +14,8 @@
     "url": "http://www.felipefialho.com"
   },
   "scripts": {
-    "start": "webpack-dev-server --progress",
-    "build": "webpack --env=production",
+    "start": "webpack-dev-server",
+    "build": "webpack -p --env=production",
     "lint": "npm run lint:js && npm run lint:css",
     "lint:css": "stylint ./src/",
     "lint:js": "eslint ./src/",
@@ -23,6 +23,7 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
+    "lodash": "^4.17.4",
     "webpack": "^3.5.5"
   },
   "devDependencies": {
@@ -37,6 +38,7 @@
     "file-loader": "0.11.2",
     "html-webpack-plugin": "^2.30.1",
     "imagemin-webpack-plugin": "^2.1.1",
+    "json-loader": "^0.5.7",
     "lost": "^8.2.1",
     "postcss-font-magician": "^2.1.1",
     "postcss-loader": "^2.1.3",
