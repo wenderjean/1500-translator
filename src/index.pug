@@ -11,14 +11,16 @@ html
       .container 
         img.avatar(src='medias/political-avatar.svg' alt='Avatar simulando um politico')
         section.translator
-          textarea.translator__text(placeholder='Digitar texto...')
-          textarea.translator__text(disabled) Tradução
+          .translator__main
+            textarea.translator__text(placeholder='Digitar texto...' data-translator='input')
+            textarea.translator__text(disabled  data-translator='result') Tradução...
+          button.translator__button(data-translator='button') Traduzir!
         section.content
-          h1.title Traduzindo linguajar politico para vocabulário das ruas
-          p.text 
-            | Quer traduzir novas palavras? 
-            a(href='https://github.com/LFeh/political-translator' target='_blank' rel='noopener noreferrer') Adiciona aí
-            | ... 
+            h1.title Traduzindo linguajar politico para vocabulário das ruas
+            p.text 
+              | Quer traduzir novas palavras? 
+              a(href='https://github.com/LFeh/political-translator' target='_blank' rel='noopener noreferrer') Adiciona aí
+              | ... 
     footer.footer(role='dialog') 
       p.footer__description 
         | Feito com ❤ por 

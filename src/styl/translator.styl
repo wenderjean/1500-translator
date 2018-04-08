@@ -3,23 +3,45 @@
 // --------------------------------------------------
   
 .translator
-  +above('sm')
-    align-items stretch
-    lost-flex-container row 
+  &__main
+    +above('sm')
+      align-items stretch
+      lost-flex-container row 
 
   &__text 
     border 0
     box-shadow 0px 1px 3px 1px rgba($gray, .2)
+    display block
     font-size 2.4rem
-    lost-column 6/12 0 0
-    min-height 'calc(50vh - %s)' % ($footer-height + $avatar-height)
+    min-height 30vw
     resize none
     padding $space
-    overflow-y auto
+    width 100%
+
+    +above('sm')
+      lost-column 6/12 0 0
+      min-height 'calc(50vh - %s)' % ($footer-height + $avatar-height)
+      overflow-y auto
 
     &[disabled]
       background $gray-white 
 
     &:not(:last-child)
       border-right $gray-lighter solid 1px
- 
+
+  &__button
+    background $blue 
+    border 0
+    color $white
+    cursor pointer
+    display block
+    font-size 1.6rem
+    font-weight bold
+    margin-left auto
+    margin-right auto
+    margin-top $space-sm
+    padding $space-sm
+    transition background .3s
+
+    &:hover 
+      background darken($blue, 25%)
