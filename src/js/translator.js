@@ -10,8 +10,8 @@ const delay = (function(){
 })();
 
 const Translator = () => {
-  const $translator = document.querySelectorAll('[data-translator]')[0];
-  const $result = document.querySelectorAll('[data-result]')[0];
+  const $translator = document.querySelectorAll('[data-translator="input"]')[0];
+  const $result = document.querySelectorAll('[data-translator="result"]')[0];
   const library = json[0];
   let resultTranslator = [];
 
@@ -21,7 +21,7 @@ const Translator = () => {
       const words = $translator.value.toLowerCase().split(' ');
       _.forEach(library, (value, key) => {
         _.map(words, word => { 
-          word === key ? resultTranslator.push(value) : resultTranslator.push(word);
+          word === key ? resultTranslator.push(value) : '';
         });
       });
     }, 600);
