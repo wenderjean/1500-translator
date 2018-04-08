@@ -1,9 +1,21 @@
+<p align="center"><img src="/src/medias/political-avatar.png" alt="Political Avatar"></p>
+
 # Political Translator
 
 [![license](https://img.shields.io/github/license/LFeh/political-translator.svg)](./license.md)
 [![GitHub contributors](https://img.shields.io/github/contributors/LFeh/political-translator.svg)](https://github.com/LFeh/political-translator/graphs/contributors)
 
 This project uses Pug, Stylus and Webpack.
+
+## Add a new words
+
+It is simple, you need to access the `src/library.json`, add the new word and submit a pull request. 
+
+Example:
+
+```json
+  "vossa excelencia": "mano"
+```
 
 ## Getting Started
 
