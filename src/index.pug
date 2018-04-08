@@ -11,8 +11,8 @@ html
       .container 
         img.avatar(src='medias/political-avatar.svg' alt='Avatar simulando um politico')
         section.translator
-          textarea.translator__text(placeholder='Digitar texto...')
-          textarea.translator__text(disabled) Tradução
+          textarea.translator__text(placeholder='Digitar texto...' data-translator)
+          textarea.translator__text(disabled data-result) Tradução
         h1.title Traduzindo linguajar politico para vocabulário das ruas
     footer.footer(role='dialog') 
       p.footer__description 
