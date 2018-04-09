@@ -5,8 +5,12 @@ const rupture = require('rupture');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
+const OfflinePlugin = require('offline-plugin'); 
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const PROD = process.env.NODE_ENV === 'production';
+const DEV = process.env.NODE_ENV === 'development';
 
-module.exports = {
+const config = {
   entry: {
     app: './src/app.js'
   },
@@ -56,29 +60,28 @@ module.exports = {
         }
       }
     ]
-  },
-  devServer: {
-    contentBase: path.join(__dirname, 'dist'),
-    compress: true,
-    open: true
-  },
+  }, 
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+    }),
+    new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({ 
       title: 'Political Translator',
       hash: true, 
       template: './src/index.pug'
-    }),
-    new webpack.optimize.UglifyJsPlugin({}), 
+    }), 
     new CopyWebpackPlugin([
       { from: './src/medias/', to: './medias' },
       { from: './src/favicon.ico', to: './' },
     ]),
     new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }),
     new WebpackPwaManifest({
-      name: 'Political Translator',
-      short_name: 'political-translator',
+      name: 'Political Translator', 
+      short_name: 'Translator',
       description: 'To translate political language for people\'s language',
       background_color: '#0291a7',
+      theme_color: '#0291a7',
       icons: [
         {
           src: path.resolve('./src/medias/political-avatar.png'),
@@ -88,3 +91,21 @@ module.exports = {
     })
   ]
 };
+ 
+if (PROD) {
+  config.plugins.push(new OfflinePlugin());
+  config.plugins.push(new webpack.optimize.UglifyJsPlugin({}));
+}  
+
+if (DEV) {
+  config.devServer = {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    open: true
+  }; 
+}  
+
+module.exports = (env) => {
+  return config;
+};
+ 
