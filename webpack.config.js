@@ -11,6 +11,11 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const PROD = process.env.NODE_ENV === 'production';
 const DEV = process.env.NODE_ENV === 'development';
 
+const copyFiles = [
+  { from: './src/medias/', to: './medias' },
+  { from: './src/favicon.ico', to: './' },
+];
+ 
 const config = {
   entry: {
     app: './src/app.js'
@@ -71,7 +76,8 @@ const config = {
       title: 'Political Translator',
       hash: true, 
       template: './src/index.pug'
-    })
+    }), 
+    new CopyWebpackPlugin(copyFiles)
   ]
 };
 
@@ -89,17 +95,11 @@ const webapp = {
   ]
 };
 
-const copyToProd = [
-  { from: './src/medias/', to: './medias' },
-  { from: './src/favicon.ico', to: './' },
-];
- 
 if (PROD) {
   config.plugins.push(new OfflinePlugin());
   config.plugins.push(new webpack.optimize.UglifyJsPlugin({})); 
-  config.plugins.push(new BundleAnalyzerPlugin({analyzerMode: 'disabled'})); 
-  config.plugins.push(new CopyWebpackPlugin(copyToProd));
   config.plugins.push(new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }));
+  config.plugins.push(new BundleAnalyzerPlugin({analyzerMode: 'disabled'})); 
   config.plugins.push(new WebpackPwaManifest(webapp));
 }  
 
