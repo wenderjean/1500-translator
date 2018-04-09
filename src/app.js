@@ -1,4 +1,6 @@
-import './app.styl';
+import * as offline from 'offline-plugin/runtime';
 import { translator } from './js/translator';
-translator();
- 
+import './app.styl';
+
+translator(); 
+offline.install();
