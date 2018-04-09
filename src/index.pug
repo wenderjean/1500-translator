@@ -5,7 +5,7 @@ html(lang='pt-br')
     meta(charset='UTF-8')
     meta(http-equiv='X-UA-Compatible' content='IE=edge')
     meta(name='description' content='Traduzindo linguajar politico para vocabulário das ruas')
-    meta(name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=no') 
+    meta(name='viewport' content='width=device-width, initial-scale=1, maximum-scale=5') 
     meta(name='theme-color' content='#0291a7')
     link(rel='shortcut icon' type='image/favicon' href='favicon.ico')  
   body   
@@ -16,10 +16,10 @@ html(lang='pt-br')
           .translator__main
             .translator__content
               label.translator__label(for='before') Texto original
-              textarea.translator__text(placeholder='Digitar texto...' name='before' data-translator='input')
+              textarea.translator__text(placeholder='Digitar texto...' id='before' data-translator='input')
             .translator__content
               label.translator__label(for='after') Tradução
-              textarea.translator__text(disabled name='after'  data-translator='result') Tradução...
+              textarea.translator__text(disabled id='after' data-translator='result') Tradução...
           button.translator__button(data-translator='button') Traduzir!
         section.content
             h1.title Traduzindo linguajar politico para vocabulário das ruas
