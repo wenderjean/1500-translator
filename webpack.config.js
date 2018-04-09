@@ -7,6 +7,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const OfflinePlugin = require('offline-plugin'); 
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const PROD = process.env.NODE_ENV === 'production';
 const DEV = process.env.NODE_ENV === 'development';
 
@@ -70,31 +71,36 @@ const config = {
       title: 'Political Translator',
       hash: true, 
       template: './src/index.pug'
-    }), 
-    new CopyWebpackPlugin([
-      { from: './src/medias/', to: './medias' },
-      { from: './src/favicon.ico', to: './' },
-    ]),
-    new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }),
-    new WebpackPwaManifest({
-      name: 'Political Translator', 
-      short_name: 'Translator',
-      description: 'To translate political language for people\'s language',
-      background_color: '#0291a7',
-      theme_color: '#0291a7',
-      icons: [
-        {
-          src: path.resolve('./src/medias/political-avatar.png'),
-          sizes: [96, 128, 192, 256, 384, 512]
-        }
-      ]
     })
   ]
 };
+
+const webapp = {
+  name: 'Political Translator', 
+  short_name: 'Translator',
+  description: 'To translate political language for people\'s language',
+  background_color: '#0291a7',
+  theme_color: '#0291a7',
+  icons: [
+    {
+      src: path.resolve('./src/medias/political-avatar.png'),
+      sizes: [96, 128, 192, 256, 384, 512]
+    }
+  ]
+};
+
+const copyToProd = [
+  { from: './src/medias/', to: './medias' },
+  { from: './src/favicon.ico', to: './' },
+];
  
 if (PROD) {
   config.plugins.push(new OfflinePlugin());
-  config.plugins.push(new webpack.optimize.UglifyJsPlugin({}));
+  config.plugins.push(new webpack.optimize.UglifyJsPlugin({})); 
+  config.plugins.push(new BundleAnalyzerPlugin({analyzerMode: 'disabled'})); 
+  config.plugins.push(new CopyWebpackPlugin(copyToProd));
+  config.plugins.push(new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }));
+  config.plugins.push(new WebpackPwaManifest(webapp));
 }  
 
 if (DEV) {
