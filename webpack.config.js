@@ -4,6 +4,7 @@ const webpack = require('webpack');
 const rupture = require('rupture');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const WebpackPwaManifest = require('webpack-pwa-manifest');
 
 module.exports = {
   entry: {
@@ -68,10 +69,22 @@ module.exports = {
       template: './src/index.pug'
     }),
     new webpack.optimize.UglifyJsPlugin({}), 
-    new CopyWebpackPlugin([{
-      from: './src/medias/',
-      to: './medias'
-    }]),
-    new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i })
+    new CopyWebpackPlugin([
+      { from: './src/medias/', to: './medias' },
+      { from: './src/favicon.ico', to: './' },
+    ]),
+    new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }),
+    new WebpackPwaManifest({
+      name: 'Political Translator',
+      short_name: 'political-translator',
+      description: 'To translate political language for people\'s language',
+      background_color: '#0291a7',
+      icons: [
+        {
+          src: path.resolve('./src/medias/political-avatar.png'),
+          sizes: [96, 128, 192, 256, 384, 512]
+        }
+      ]
+    })
   ]
 };
