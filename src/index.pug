@@ -7,7 +7,15 @@ html(lang='pt-br')
     meta(name='description' content='Traduzindo linguajar politico para vocabulário das ruas')
     meta(name='viewport' content='width=device-width, initial-scale=1, maximum-scale=5') 
     meta(name='theme-color' content='#0291a7')
-    link(rel='shortcut icon' type='image/favicon' href='favicon.ico')  
+    link(rel='shortcut icon' type='image/favicon' href='favicon.ico')   
+    script(async src='https://www.googletagmanager.com/gtag/js?id=UA-40410936-4')
+    script.
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-40410936-4'); 
+
   body   
     main.main(role='main')    
       .container 
