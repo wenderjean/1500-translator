@@ -8,6 +8,14 @@
       align-items stretch
       lost-flex-container row 
 
+  &__content
+    +above('sm')
+      lost-column 6/12 0 0 
+
+  &__label
+    position absolute
+    top -999em
+
   &__text 
     border 0
     box-shadow 0 1px 3px 1px rgba($gray, .2)
@@ -18,8 +26,7 @@
     resize none
     width 100%
 
-    +above('sm')
-      lost-column 6/12 0 0
+    +above('sm') 
       min-height 'calc(50vh - %s)' % ($footer-height + $avatar-height)
       overflow-y auto
 

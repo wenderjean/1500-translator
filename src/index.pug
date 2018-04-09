@@ -1,20 +1,25 @@
 doctype html
-html
+html(lang='pt-br')
   head
     title Tradutor Politico
     meta(charset='UTF-8')
     meta(http-equiv='X-UA-Compatible' content='IE=edge')
     meta(name='description' content='Traduzindo linguajar politico para vocabulário das ruas')
     meta(name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=no') 
-    link(rel='shortcut icon' type='image/favicon' href='favicon.ico') 
+    meta(name='theme-color' content='#0291a7')
+    link(rel='shortcut icon' type='image/favicon' href='favicon.ico')  
   body   
     main.main(role='main')    
       .container 
         img.avatar(src='medias/political-avatar.svg' alt='Avatar simulando um politico')
         section.translator
           .translator__main
-            textarea.translator__text(placeholder='Digitar texto...' data-translator='input')
-            textarea.translator__text(disabled  data-translator='result') Tradução...
+            .translator__content
+              label.translator__label(for='before') Texto original
+              textarea.translator__text(placeholder='Digitar texto...' name='before' data-translator='input')
+            .translator__content
+              label.translator__label(for='after') Tradução
+              textarea.translator__text(disabled name='after'  data-translator='result') Tradução...
           button.translator__button(data-translator='button') Traduzir!
         section.content
             h1.title Traduzindo linguajar politico para vocabulário das ruas
@@ -26,3 +31,10 @@ html
       p.footer__description 
         | Feito com ❤ por 
         a.footer__link(href='https://twitter.com/LFeh' target='_blank' rel='noopener noreferrer') Felipe Fialho
+
+    script.
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js')
+          .then(reg => console.info('registered sw', reg))
+          .catch(err => console.error('error registering sw', err));
+      }
