@@ -5,6 +5,8 @@
 [![license](https://img.shields.io/github/license/LFeh/1500-translator.svg)](./license.md)
 [![GitHub contributors](https://img.shields.io/github/contributors/LFeh/1500-translator.svg)](https://github.com/LFeh/1500-translator/graphs/contributors)
 
+[View project](https://www.felipefialho.com/1500-translator/)
+
 This project uses Pug, Stylus and Webpack.
 
 ## Add a new words
