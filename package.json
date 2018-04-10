@@ -1,7 +1,7 @@
 {
   "name": "1500-translator",
   "version": "1.0.0",
-  "title": "Political Translator",
+  "title": "1500 Translator",
   "description": "To translate political language for people's language",
   "homepage": "http://www.felipefialho.com/1500-translator",
   "browserslist": [
@@ -16,7 +16,7 @@
   "scripts": {
     "start": "NODE_ENV=development webpack-dev-server",
     "build": "NODE_ENV=production webpack -p",
-    "deploy": "gh-pages-deploy", 
+    "deploy": "gh-pages-deploy",
     "analyzer": "npm run build && webpack-bundle-analyzer ./dist/stats.json",
     "lint": "npm run lint:js && npm run lint:css",
     "lint:css": "stylint ./src/",

@@ -73,7 +73,7 @@ const config = {
     }),
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({ 
-      title: 'Political Translator',
+      title: '1500 Translator',
       hash: true, 
       template: './src/index.pug'
     }), 
@@ -82,7 +82,7 @@ const config = {
 };
 
 const webapp = {
-  name: 'Political Translator', 
+  name: '1500 Translator', 
   short_name: 'Translator',
   description: 'To translate political language for people\'s language',
   background_color: '#0291a7',
