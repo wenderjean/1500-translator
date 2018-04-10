@@ -10,13 +10,28 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const PROD = process.env.NODE_ENV === 'production';
 const DEV = process.env.NODE_ENV === 'development';
+const config = require('./app.config.json');
+
+const webapp = {
+  name: config.title, 
+  short_name: config.short_name,
+  description: config.description,
+  background_color: config.theme_color,
+  theme_color: config.theme_color,
+  icons: [
+    {
+      src: path.resolve('./src/medias/political-avatar.png'),
+      sizes: [96, 128, 192, 256, 384, 512]
+    }
+  ]
+};
 
 const copyFiles = [
   { from: './src/medias/', to: './medias' },
   { from: './src/favicon.ico', to: './' },
 ];
  
-const config = {
+const baseWebpack = {
   entry: {
     app: './src/app.js'
   },
@@ -28,7 +43,7 @@ const config = {
     rules: [
       {
         test: /\.pug/,
-        use: 'pug-loader'
+        loader: 'pug-loader',
       },
       {
         test: /\.styl/,
@@ -72,8 +87,7 @@ const config = {
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     }),
     new CleanWebpackPlugin(['dist']),
-    new HtmlWebpackPlugin({ 
-      title: '1500 Translator',
+    new HtmlWebpackPlugin({  
       hash: true, 
       template: './src/index.pug'
     }), 
@@ -81,30 +95,16 @@ const config = {
   ]
 };
 
-const webapp = {
-  name: '1500 Translator', 
-  short_name: 'Translator',
-  description: 'To translate political language for people\'s language',
-  background_color: '#0291a7',
-  theme_color: '#0291a7',
-  icons: [
-    {
-      src: path.resolve('./src/medias/political-avatar.png'),
-      sizes: [96, 128, 192, 256, 384, 512]
-    }
-  ]
-};
-
 if (PROD) {
-  config.plugins.push(new OfflinePlugin());
-  config.plugins.push(new webpack.optimize.UglifyJsPlugin({})); 
-  config.plugins.push(new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }));
-  config.plugins.push(new BundleAnalyzerPlugin({analyzerMode: 'disabled'})); 
-  config.plugins.push(new WebpackPwaManifest(webapp));
+  baseWebpack.plugins.push(new OfflinePlugin());
+  baseWebpack.plugins.push(new webpack.optimize.UglifyJsPlugin({})); 
+  baseWebpack.plugins.push(new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }));
+  baseWebpack.plugins.push(new BundleAnalyzerPlugin({analyzerMode: 'disabled'})); 
+  baseWebpack.plugins.push(new WebpackPwaManifest(webapp));
 }  
 
 if (DEV) {
-  config.devServer = {
+  baseWebpack.devServer = {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
     open: true
@@ -112,6 +112,6 @@ if (DEV) {
 }  
 
 module.exports = (env) => {
-  return config;
+  return baseWebpack;
 };
  
