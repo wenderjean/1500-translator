@@ -95,12 +95,25 @@ const baseWebpack = {
   ]
 };
 
+const sw = { 
+  safeToUseOptionalCaches: true,
+  caches: {
+    main: ['/'],
+    additional: ['*.js?*', '*.css?*', 'assets/*.svg?*']
+  },
+  navigateFallbackURL: '/',
+  autoUpdate: true,
+  responseStrategy: 'network-first',
+  ServiceWorker: { events: true },
+  AppCache: { events: true }
+};
+
 if (PROD) {
-  baseWebpack.plugins.push(new OfflinePlugin());
   baseWebpack.plugins.push(new webpack.optimize.UglifyJsPlugin({})); 
   baseWebpack.plugins.push(new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }));
   baseWebpack.plugins.push(new BundleAnalyzerPlugin({analyzerMode: 'disabled'})); 
   baseWebpack.plugins.push(new WebpackPwaManifest(webapp));
+  baseWebpack.plugins.push(new OfflinePlugin(sw));
 }  
 
 if (DEV) {

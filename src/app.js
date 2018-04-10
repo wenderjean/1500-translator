@@ -3,4 +3,8 @@ import { translator } from './js/translator';
 import './app.styl';
 
 translator(); 
-offline.install();
+offline.install({
+  onUpdateReady: function() {
+    offline.applyUpdate();
+  }
+});
