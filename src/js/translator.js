@@ -6,7 +6,7 @@ const translator = () => {
   const $translator = document.querySelector('[data-translator="input"]');
   const $result = document.querySelector('[data-translator="result"]');
   const $button = document.querySelector('[data-translator="button"]');
-  const library = json[0];
+  const library = json;
   let resultTranslator, text; 
 
   $button.addEventListener('click', (e) => {
