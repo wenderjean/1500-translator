@@ -1,6 +1,7 @@
 import map from 'lodash/map';
 import forEach from 'lodash/forEach';
 import json from '../library.json';
+import removeAccent from '../convert.js';
 
 const translator = () => {
   const $translator = document.querySelector('[data-translator="input"]');
