@@ -28,9 +28,6 @@
     "staticpath": "dist",
     "prep": [
       "build"
-    ],
-    "post": [
-      "rm -R ./dist"
     ]
   },
   "dependencies": {
