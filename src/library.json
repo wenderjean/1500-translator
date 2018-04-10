@@ -12,7 +12,7 @@
   "senhor": "mano",
   "senhora": "mina",
   "elite": "galera dominante",
-  "prerrogativas": "vantagens que pessoas comuns não tem",
+  "prerrogativas": "vantagens que pessoas comuns não têm",
   "prerrogativa": "vantagem que pessoas comuns não tem",
   "promulgação": "publicação",
   "promulgou": "publicou",
@@ -30,5 +30,10 @@
   "vossa senhoria": "mano",
   "saudar": "dar um salve para",
   "saudando": "dando um salve para",
-  "se exauriu": "virou pó"
+  "se exauriu": "virou pó",
+  "emenda": "puxadinho",
+  "pec": "puxadinho na lei",
+  "entra em vigor": "tá valendo",
+  "supracitado": "escrito ali em cima",
+  "supracitados": "escritos ali em cima"
 }
