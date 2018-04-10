@@ -1,9 +1,9 @@
 {
-  "name": "political-translator",
+  "name": "1500-translator",
   "version": "1.0.0",
   "title": "Political Translator",
   "description": "To translate political language for people's language",
-  "homepage": "http://www.felipefialho.com/political-translator",
+  "homepage": "http://www.felipefialho.com/1500-translator",
   "browserslist": [
     "> 1%",
     "last 2 versions"

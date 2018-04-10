@@ -1,9 +1,9 @@
 <p align="center"><img src="/src/medias/political-avatar.svg" alt="Political Avatar" width="200"></p>
 
-# Political Translator
+# 1500 Translator
 
-[![license](https://img.shields.io/github/license/LFeh/political-translator.svg)](./license.md)
-[![GitHub contributors](https://img.shields.io/github/contributors/LFeh/political-translator.svg)](https://github.com/LFeh/political-translator/graphs/contributors)
+[![license](https://img.shields.io/github/license/LFeh/1500-translator.svg)](./license.md)
+[![GitHub contributors](https://img.shields.io/github/contributors/LFeh/1500-translator.svg)](https://github.com/LFeh/1500-translator/graphs/contributors)
 
 This project uses Pug, Stylus and Webpack.
 
@@ -21,8 +21,8 @@ Example:
 
 ```sh
 # Clone this repository
-$ git clone git@github.com:LFeh/political-translator.git
-$ cd political-translator
+$ git clone git@github.com:LFeh/1500-translator.git
+$ cd 1500-translator
 
 # install dependencies
 $ npm i
