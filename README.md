@@ -1,15 +1,14 @@
 <p align="center"><img src="/src/medias/political-avatar.svg" alt="Political Avatar" width="200"></p>
 
-# 1500 Translator
-
 [![license](https://img.shields.io/github/license/LFeh/1500-translator.svg)](./license.md)
 [![GitHub contributors](https://img.shields.io/github/contributors/LFeh/1500-translator.svg)](https://github.com/LFeh/1500-translator/graphs/contributors)
 
+# 1500 Translator
+> To translate political language for people's language
+
 [View project](https://www.felipefialho.com/1500-translator/)
 
-This project uses Pug, Stylus and Webpack.
-
-## Add a new words
+## Add new words
 
 It is simple, you need to access the `src/library.json`, add the new word and submit a pull request. 
 
@@ -20,6 +19,9 @@ Example:
 ```
 
 ## Getting Started
+
+This project uses Pug, Stylus and Webpack.
+
 
 ```sh
 # Clone this repository
