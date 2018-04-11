@@ -1,4 +1,3 @@
-import map from 'lodash/map';
 import forEach from 'lodash/forEach';
 import json from '../library.json';
 import { removeAccent } from './convert.js'; 
@@ -8,17 +7,16 @@ const translator = () => {
   const $result = document.querySelector('[data-translator="result"]');
   const $button = document.querySelector('[data-translator="button"]');
   const library = json;
-  let resultTranslator, text; 
+  let text; 
 
   $button.addEventListener('click', (e) => {
-    e.preventDefault();
-    resultTranslator = []; 
-    text = $translator.value.toLowerCase().split(' '); 
-    map(text, word => {
-      forEach(library, (value, key) => removeAccent(word) === removeAccent(key) ? word = value : word);
-      return resultTranslator.push(word);
-    });
-    $result.value = resultTranslator.join(' ') || 'Tradução';
+    e.preventDefault(); 
+    text = $translator.value.toLowerCase();  
+    forEach(library, (value, key) => { 
+      const regex = new RegExp(removeAccent(key), 'gm'); 
+      text = removeAccent(text).replace(regex, value); 
+    }); 
+    $result.value = text || 'Tradução';  
   });
 };
 
