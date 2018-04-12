@@ -28,7 +28,8 @@
     "staticpath": "dist",
     "prep": [
       "build"
-    ]
+    ],
+    "noprompt": true
   },
   "dependencies": {
     "lodash": "^4.17.4",
