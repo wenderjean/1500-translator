@@ -56,11 +56,4 @@ html(lang='pt-br')
     footer.footer(role='dialog') 
       p.footer__description 
         | Feito com ❤ por 
-        a.footer__link(href='https://twitter.com/LFeh' target='_blank' rel='noopener noreferrer') Felipe Fialho
-
-    script.
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('sw.js')
-          .then(reg => console.info('registered sw', reg))
-          .catch(err => console.error('error registering sw', err));
-      }
+        a.footer__link(href='https://twitter.com/LFeh' target='_blank' rel='noopener noreferrer') Felipe Fialho 
