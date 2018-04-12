@@ -1,9 +1,11 @@
 <p align="center"><img src="/src/medias/political-avatar.svg" alt="Political Avatar" width="200"></p>
 
+# 1500 Translator
+
+![Travis](https://img.shields.io/travis/LFeh/1500-translator.svg)
 [![license](https://img.shields.io/github/license/LFeh/1500-translator.svg)](./license.md)
 [![GitHub contributors](https://img.shields.io/github/contributors/LFeh/1500-translator.svg)](https://github.com/LFeh/1500-translator/graphs/contributors)
 
-# 1500 Translator
 > To translate political language for people's language
 
 [View project](https://www.felipefialho.com/1500-translator/)
